@@ -1,3 +1,7 @@
+<link href="style.css" rel="stylesheet" />
+
+
+
 <div class="wrapper">
 	<h1>Hänga gubbe</h1>
 	 <p>Använd alfabetet nedan för att gissa vad ordet är, om det blir svårt kan du klicka på "tips" knappen. </p>
@@ -15,4 +19,12 @@
 	 	<button id="hint">Tips</button>
 	 	<button id="reset">Spela Igen</button>
 	 </div>
+	 <form action="post" id="guessform">
+	 	<p>
+	 		<label for="guess">Gissning:</label>
+	 		<input type="text" id="guess" maxlength="1" />
+	 	</p>
+	 	<input type="submit" value="Gissa" />
+	 </form>
 </div>
+<script src="game.js"></script>
