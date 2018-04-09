@@ -3,7 +3,8 @@ let words = [
     "fotboll",
     "blåbär",
     "tranemo",
-    "programmering"
+    "programmering",
+    "yggdrasil"
 ];
 
 console.log(words.length);
