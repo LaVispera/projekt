@@ -26,6 +26,12 @@ const guessform = document.getElementById("guessform");
 
 guessform.addEventListener("submit", makeGuess);
 
+/**
+* 
+*
+*
+*/
+
 function getIndicesOf(searchStr, str) {
     let searchStrLen = searchStr.length;
     if (searchStrLen == 0) {
