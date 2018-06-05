@@ -4,7 +4,11 @@ let words = [
     "blåbär",
     "tranemo",
     "programmering",
-    "yggdrasil"
+    "yggdrasil",
+    "potatis",
+    "träd",
+    "äventyr",
+    "gräsklippare"
 ];
 
 console.log(words.length);
@@ -46,6 +50,7 @@ const makeGuess = (e) => {
 	e.preventDefault();
 	let guess = document.getElementById("guess").value;
 	console.log(guess);
+    document.getElementById("guess").value = "";
     let indices = getIndicesOf(guess, pickedWord);
     console.log(indices);
     if ( indices.length ) {
@@ -54,9 +59,10 @@ const makeGuess = (e) => {
             ctx.fillText(pickedWord[indices[i]], charPositions[indices[i]], 325);
         }
     } else {
+        // Rita nästa del av gubben
+        drawHangman[badGuesses]();
         // Fel gissning
         badGuesses++;
-        // Rita nästa del av gubben
 
         // Visa bokstaven
 
@@ -67,9 +73,95 @@ const makeGuess = (e) => {
 }
 
 
+const drawHangman = [
+   () => {
+        ctx.beginPath();
+        ctx.moveTo(150, 270);
+        ctx.bezierCurveTo(140, 180, 255, 170, 250, 270);
+        ctx.strokeStyle = "green";
+        ctx.stroke();
+        ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(200, 198);
+       ctx.lineTo(200, 100);
+       ctx.strokeStyle = "black";
+       ctx.stroke();
+       ctx.closePath();
+
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(199, 100);
+       ctx.lineTo(275, 100);
+       ctx.stroke();
+       ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(200, 125);
+       ctx.lineTo(230, 100);
+       ctx.stroke();
+       ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(275, 99);
+       ctx.lineTo(275, 125);
+       ctx.stroke();
+       ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.arc(275,134,10,0,2*Math.PI);
+       ctx.stroke();
+       ctx.closePath();
+   },
+   () => {
+        ctx.beginPath();
+        ctx.moveTo(275, 145);
+        ctx.lineTo(275, 175);
+        ctx.stroke();
+        ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(275, 145);
+       ctx.lineTo(260, 165);
+       ctx.stroke();
+       ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(275, 145);
+       ctx.lineTo(290, 165);
+       ctx.stroke();
+       ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(275, 175);
+       ctx.lineTo(260, 195);
+       ctx.stroke();
+       ctx.closePath();
+   },
+   () => {
+       ctx.beginPath();
+       ctx.moveTo(275, 175);
+       ctx.lineTo(290, 195);
+       ctx.stroke();
+       ctx.closePath();
+
+       ctx.font = '48px cambria';
+       ctx.fillText("Du förlorade!", 150, 70);
+   }
+];
+
 const guessform = document.getElementById("guessform");
 
 guessform.addEventListener("submit", makeGuess);
+ctx.fillStyle = "black";
 
 /**
 *
